@@ -15,11 +15,14 @@ for line in sys.stdin:
 
             if one_way:
                 print '%s has one-way relationships with %s' % (current_key,', '.join(one_way))
+                #print(f'{current_key} has one-way relationships with {", ".join(one_way)}')
         
         current_key = key
         current_values = set()
 
     current_values.add(value)
+
+
 
 # Check for the last key
 if current_key:
@@ -29,3 +32,5 @@ if current_key:
 
     if one_way:
         print '%s has one-way relationships with %s' % (current_key,', '.join(one_way))
+        #print(f'{current_key} has one-way relationships with {", ".join(one_way)}')
+
