@@ -1,15 +1,15 @@
 import sys
 
-# devide input into lines
+# Process each line from standard input
 for line in sys.stdin:
     line = line.strip()
-    words = len(line.split())
-    
-    # gether groups
-    if words <= 2: # line with 1 or 2 words
-        print '%s\t%s' % (line, 3) # group 3
-    elif words % 2 == 0: # line with even number of words
-        print '%s\t%s' % (line, 1) # group 1
-    else: # line with odds number of words
-        print '%s\t%s' % (line, 2) # group 2
-    
+    if line:  # Check if line is not empty
+        words = len(line.split())
+
+        # Group the lines based on the number of words
+        if words <= 2:  # Lines with 1 or 2 words
+            print('%s\t%s' % (line, 3))  # Group 3
+        elif words % 2 == 0:  # Lines with an even number of words
+            print('%s\t%s' % (line, 1))  # Group 1
+        else:  # Lines with an odd number of words
+            print('%s\t%s' % (line, 2))  # Group 2
