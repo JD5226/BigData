@@ -50,5 +50,4 @@ def sidebar_bg(side_bg):
 sidebar_bg('./pics/background.jpg')
 
 ###
-do_something()
-st.balloons()
+
