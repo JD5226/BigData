@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import base64
-from utils import load_skills, do_search, paginate_dataframe
+from utils import load_skills, do_search, paginate_dataframe, do_search_simple
 
 
 # initialize data
@@ -34,16 +34,21 @@ st.subheader('welcome！:smile:')
 st.divider()  # Draws a horizontal rule
 #search
 st.text_input("input the company",key="company")
-st.text_input("input the company",key="title")
-st.session_state.company #connect text input
-st.session_state.title
+st.text_input("input the job title",key="title")
 ###########################################
 
 
 
 #button
 if st.button("Submit"):
-    result = do_search(df)
+    search_items = {
+        'state':st.session_state.state,
+        'job_skills':st.session_state.skills,
+        'company':st.session_state.company,
+        'job_title':st.session_state.title
+    }
+    
+    result = do_search_simple(df,search_items)
     st.session_state['result'] = result  # Store result in session state
     st.session_state['page_num'] = 1  # Reset to first page
 
@@ -75,7 +80,8 @@ if 'result' in st.session_state:
 ##state
 add_selectbox = st.sidebar.selectbox(
     'Select your state::sunglasses:',
-    states
+    states,
+    key='state'
 )
 
 ##skills
@@ -85,7 +91,8 @@ add_selectbox = st.sidebar.selectbox(
 selected_options = st.sidebar.multiselect(
     'Select your skills	:thumbsup: ',
     options,
-    default=[]  # Set default selected options (an empty list means there are no default selected options)
+    default=[],  # Set default selected options (an empty list means there are no default selected options)
+    key='skills'
 )
 
 
