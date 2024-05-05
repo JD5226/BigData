@@ -49,3 +49,62 @@ The project centers around several key objectives:
 - **Dataset:** [1.3M Linkedin Jobs & Skills (2024)](https://www.kaggle.com/datasets/asaniczka/1-3m-linkedin-jobs-and-skills-2024/data)
 - **Size:** 2GB
 - **Records:** 1,296,000
+
+# Quick Setup Guide
+
+## Installation Instructions
+
+### Step 1: Install Required Packages
+
+First, install the required Python packages using pip:
+
+```bash
+pip install -r requirements.txt
+```
+
+If Python reports any missing modules, please install each required module separately.
+
+### Step 2: Download and Setup Data
+
+Download the necessary data file from the provided link and extract it into the specified directory:
+
+```plaintext
+Download Link: [Google Drive Data File](https://drive.google.com/file/d/1UjCRQ7ZeF79miKzDM74Fwgon8fYEdiFh/view?usp=drive_link)
+```
+
+Please extract the downloaded file to the following location:
+
+```
+/Project/data
+```
+
+### Step 3: Configure Batch Files
+
+Navigate to the `/Project` directory where you will find two `.bat` files. You will need to modify these files by changing the line:
+
+```plaintext
+call conda activate streamlit
+```
+
+to:
+
+```plaintext
+call conda activate your/conda/env/
+```
+
+After making this change, double-click the `.bat` file to initiate the project.
+
+## Running the Project Through Conda
+
+For direct execution through Conda, follow these steps:
+
+```bash
+conda create -n yourenvname python=3.10
+conda activate yourenvname
+pip install -r requirements.txt
+streamlit run ./Project/web.py
+```
+
+### Troubleshooting
+
+If you encounter errors such as "no module named xxxxxx", please install the additional modules separately.
